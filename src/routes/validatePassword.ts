@@ -1,6 +1,11 @@
-const route = "/validatePassword"
-const api = require("../api/validatePassword")
+import { Router } from "express";
+import { RequestHandler } from "express-serve-static-core";
+import  post  from "../api/validatePassword";
 
-module.exports = (router) => {
-  router.route(route).post(api.post)
-}
+const route = "/validatePassword";
+
+const routes = (router: Router) => {
+  router.route(route).post(post);
+};
+
+export default routes;

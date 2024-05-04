@@ -1,20 +1,16 @@
-const facade = require('../facade/validateAcl')
+import { Request, Response, NextFunction } from "express";
 
-const validate = async (req, res, next) => {
+
+
+const validate = async (req: Request, res: Response, next: NextFunction) => {
   if (req.cookies.cookieID) {
     
     // const url = req.originalUrl.split('/')[1].split('?')[0];
 
     // result = await facade.validateAcl(req.cookies.cookieID, `/${url}`)
+  } 
+  next()
 
-    if (result === true) {
-      return next()
-    } else {
-      return res.sendStatus(401)
-    }
-  } else {
-    return res.sendStatus(401)
-  }
 }
 
-module.exports = { validate }
+export default {validate} 

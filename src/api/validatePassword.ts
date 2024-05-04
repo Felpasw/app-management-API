@@ -7,6 +7,4 @@ const post = async (req, res) => {
   return res.status(200).send(result)
 }
 
-module.exports = {
-  post,
-}
+export default post

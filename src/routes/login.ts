@@ -1,6 +1,6 @@
 const route = "/login"
-const api = require("../api/login")
+import api from "../api/login"
 
-module.exports = (router) => {
+export default (router) => {
   router.route(route).post(api.post)
 }

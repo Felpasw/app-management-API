@@ -9,7 +9,6 @@ const getById = async (req, res) => {
   }
   return res.sendStatus(404);
 };
-
-module.exports = {
+export default{
   getById,
-};
+}

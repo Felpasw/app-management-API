@@ -1,6 +1,6 @@
 const route = "/logout"
-const api = require("../api/logout")
+import api from  "../api/logout"
 
-module.exports = (router) => {
+export default (router) => {
   router.route(route).post(api.logout)
 }

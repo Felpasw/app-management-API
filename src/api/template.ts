@@ -61,7 +61,7 @@ const remove = async (req, res) => {
   return res.sendStatus(400)
 }
 
-module.exports = {
+export default{
   get,
   insert,
   update,

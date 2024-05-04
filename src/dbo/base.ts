@@ -1,5 +1,4 @@
 const { date } = require('joi')
-const db = require('../config/db')
 
 const get = async (
   tableName,
@@ -11,64 +10,7 @@ const get = async (
   fields = [],
   joins = []
 ) => {
-  const offset = (page - 1) * limit
 
-  let baseQuery = db(tableName).where(`${tableName}.deleted_at`, null)
-
-  joins.forEach(({ joinType, tableJoin, paramTo, paramFrom }) => {
-    if (joinType && tableJoin && paramTo && paramFrom) {
-      baseQuery = baseQuery[joinType](tableJoin, paramTo, paramFrom)
-    }
-  })
-
-  filters.forEach(({ column, operator, value }) => {
-    if (column && operator && value != null) {
-      if (operator === 'like') {
-        value = `%${value}%`
-      }
-      baseQuery = baseQuery.where(`${tableName}.${column}`, operator, value)
-    }
-  })
-
-  if (order) {
-    baseQuery = baseQuery.orderBy(`${tableName}.${order}`, direction)
-  } else if (filters && Array.isArray(filters) && filters.length > 0) {
-    const firstFilter = filters[0]
-    if (firstFilter.column) {
-      baseQuery = baseQuery.orderBy(
-        `${tableName}.${firstFilter.column}`,
-        direction
-      )
-    }
-  }
-
-  if (limit !== Infinity) {
-    baseQuery = baseQuery.limit(limit)
-  }
-
-  const result = await baseQuery
-    .clone()
-    .select(fields)
-    .offset(offset)
-    .catch(error => {
-      console.log(error.message)
-      return []
-    })
-
-  const count = await baseQuery
-    .clone()
-    .countDistinct(`${tableName}.id as quantity`)
-    .first()
-    .catch(error => {
-      console.log(error.message)
-      return []
-    })
-
-  return {
-    data: result,
-    actualPage: page,
-    total: count.quantity
-  }
 }
 
 const getById = async (id, tableName) => {
@@ -161,6 +103,5 @@ module.exports = {
   update,
   remove,
   login,
-  getPendingImporter,
   validateAcl
 }

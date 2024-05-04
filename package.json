@@ -2,7 +2,7 @@
   "name": "app-managgement-API",
   "version": "0.0.1",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only ./src/index",
+    "start": "ts-node-dev --respawn --transpile-only ./src/server",
     "dev": "ts-node-dev src/index"
   },
   "dependencies": {
