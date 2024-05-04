@@ -1,5 +1,7 @@
-const fs = require("fs")
-const path = require("path")
+import  fs from "fs"
+import path from "path"
+
+
 
 const get = async (req, res) => {
   const object = req.query
