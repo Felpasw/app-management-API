@@ -129,21 +129,6 @@ const login = async (tableName, email) => {
   return result
 }
 
-const getPendingImporter = async tableName => {
-  const result = await db(tableName)
-    .select()
-    .where('status', 0)
-    .andWhere('deleted_at', null)
-    .orderBy('priority', 'asc')
-    .first()
-    .catch(err => {
-      console.log(err.message)
-      return []
-    })
-
-  return result
-}
-
 const validateAcl = async (idUser, path) => {
   const result = await db('user')
     .select()
