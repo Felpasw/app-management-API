@@ -15,11 +15,10 @@ async function insert<T extends ModelDocument>(
   }
 }
 
-// Função genérica para encontrar documentos
-async function get<T extends ModelDocument>(
-  Model: Model<T>,
+async function get(
+  Model: any,
   query: any
-): Promise<T[]> {
+) {
   try {
     return await Model.find(query);
   } catch (error) {
@@ -27,7 +26,6 @@ async function get<T extends ModelDocument>(
   }
 }
 
-// Função genérica para atualizar um documento
 async function update<T extends ModelDocument>(
   Model: Model<T>,
   id: string,

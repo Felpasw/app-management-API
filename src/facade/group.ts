@@ -15,4 +15,4 @@ const remove = async id => {
  
 }
 
-export default { get, insert, update, remove }
+export { get, insert, update, remove }

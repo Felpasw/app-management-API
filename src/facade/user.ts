@@ -1,4 +1,4 @@
-const dbo = require('../dbo/base')
+import dbo from '../dbo/base'
 import user from '../config/tableModels/user'
 import bcrypt from  'bcrypt'
 const saltRounds = 10
@@ -19,7 +19,7 @@ const remove = async id => {
   
 }
 
-export default {
+export  {
   get,
   insert,
   update,

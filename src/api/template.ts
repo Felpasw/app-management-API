@@ -7,7 +7,7 @@ const get = async (req, res) => {
   const object = req.query
   const route = req.params.route
 
-  const facadePath = path.join(__dirname, `../facade/${route}.js`)
+  const facadePath = path.join(__dirname, `../facade/${route}.ts`)
 
   if (!fs.existsSync(facadePath)) {
     return res.sendStatus(400)
@@ -29,6 +29,8 @@ const insert = async (req, res) => {
 
   const facade = require(`../facade/${route}`)
 
+  console.log(facade);
+  
   const result = await facade.insert(object, userId)
   if (result.errors) {
     return res.status(400).send(result.errors)
@@ -63,7 +65,21 @@ const remove = async (req, res) => {
   return res.sendStatus(400)
 }
 
+const getById = async (req, res) => {
+  const id = req.params.id
+  const route = req.params.route
+  const facade = require(`../facade/${route}`)
+
+  const result = await facade.remove(id)
+  if (result) {
+    return res.sendStatus(204)
+  }
+  return res.sendStatus(400)
+}
+
+
 export default{
+  getById,
   get,
   insert,
   update,

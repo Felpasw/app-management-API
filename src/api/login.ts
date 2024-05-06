@@ -1,7 +1,8 @@
-const facade = require("../facade/login")
-const moment = require("moment")
+import { Response, Request } from "express"
+import facade from "../facade/login"
 
-const post = async (req, res) => {
+
+const insert = async (req: Request, res: Response) => {
   const object = req.body
   const result = await facade.post(object)
 
@@ -18,4 +19,4 @@ const post = async (req, res) => {
 
   return res.status(200).send(result)
 }
-export default {post}
+export default {insert}

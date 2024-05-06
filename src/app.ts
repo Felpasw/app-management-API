@@ -1,11 +1,19 @@
-import './config/moongooseFile';
-import Express from "express";
-import router from "./config/routes";
+import express from 'express'
+import bodyParser from 'body-parser'
+import cors from 'cors'
+import router from './config/routes'
+import  helmet from 'helmet'
 
-const app = Express();
+const app = express()
+require('dotenv').config()
 
-app.use(Express.json());
-app.use(Express.urlencoded({ extended: true }));
-app.use(router);
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
 
-export default app;
+app.use(bodyParser.json())
+app.use(cors({ credentials: true, origin: process.env.CORS }))
+app.use(helmet())
+
+app.use(router)
+
+export default  app

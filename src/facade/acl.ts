@@ -28,7 +28,7 @@ const remove = async id => {
   return await dbo.remove(id, tableName)
 }
 
-module.exports = {
+export {
   get,
   insert,
   update,
