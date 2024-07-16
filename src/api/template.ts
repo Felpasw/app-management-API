@@ -29,7 +29,6 @@ const insert = async (req, res) => {
 
   const facade = require(`../facade/${route}`)
 
-  console.log(facade);
   
   const result = await facade.insert(object, userId)
   if (result.errors) {

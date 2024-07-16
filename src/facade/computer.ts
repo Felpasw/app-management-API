@@ -1,14 +1,14 @@
 import dbo from '../dbo/base'
-import user from '../config/tableModels/user'
+import computer from '../config/tableModels/computer'
 import bcrypt from  'bcrypt'
 const saltRounds = 10
 
 const get = async object => {
-  
+    return await dbo.get(computer, object)
 }
 
 const insert = async object => {
-  return await dbo.insert(user, object)
+  return await dbo.insert(computer, object)
   
 }
 

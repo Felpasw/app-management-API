@@ -1,17 +1,14 @@
 import { Document, Model } from 'mongoose';
 
-
-
-
-async function insert<T extends ModelDocument>(
-  Model: Model<T>,
-  data: Partial<T>
-): Promise<T> {
+async function insert(
+  Model,
+  data
+) {
   try {
     const newDocument = new Model(data);
     return await newDocument.save();
   } catch (error) {
-    throw new Error(`Erro ao criar documento: ${error}`);
+    return new Error(`ERROR! ${error}`)
   }
 }
 

@@ -1,16 +1,16 @@
 import mongoose from 'mongoose';
 
 
-const User = new mongoose.Schema({
+const test = new mongoose.Schema({
   result: {
     type: String,
   },
   msg: {
     type: String
   },
-  computerModel: {
+  SN: {
     type:String
   }
 })
 
-export default mongoose.model('Tests', User);
+export default mongoose.model('Tests', test);
