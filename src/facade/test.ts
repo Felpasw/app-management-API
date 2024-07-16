@@ -1,4 +1,4 @@
-import tests from "../config/tableModels/tests"
+import tests from "../config/tableModels/test"
 import dbo from '../dbo/base'
 
 const get = async (object: any) => {
