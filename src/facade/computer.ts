@@ -1,28 +1,20 @@
 import dbo from '../dbo/base'
 import computer from '../config/tableModels/computer'
-import bcrypt from  'bcrypt'
-const saltRounds = 10
 
-const get = async object => {
-    return await dbo.get(computer, object)
+const get = async (object) => {
+  return await dbo.get(computer, object)
 }
 
-const insert = async object => {
+const insert = async (object) => {
   return await dbo.insert(computer, object)
-  
 }
 
 const update = async (object, id) => {
- 
+  return await dbo.update(computer, id, object)
 }
 
-const remove = async id => {
-  
+const remove = async (id) => {
+  return await dbo.remove(computer, id)
 }
 
-export  {
-  get,
-  insert,
-  update,
-  remove
-}
+export { get, insert, update, remove }
