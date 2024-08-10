@@ -2,13 +2,16 @@ import mongoose from 'mongoose';
 
 
 const test = new mongoose.Schema({
-  result: {
-    type: String,
+  success: {
+    type: Boolean,
   },
   msg: {
     type: String
   },
   SN: {
+    type:String
+  },
+  type: {
     type:String
   }
 })

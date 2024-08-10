@@ -12,7 +12,7 @@ const insert = async (object) => {
 }
 
 const update = async (object, id) => {
-  return await dbo.update(user, object)
+  return await dbo.update(user, id, object)
 }
 
 const remove = async (id) => {

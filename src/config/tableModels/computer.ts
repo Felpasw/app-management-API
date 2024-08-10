@@ -8,6 +8,9 @@ const computer = new mongoose.Schema({
   IP: {
     type: String
   },
+  online: {
+    type: String
+  },
   SN: {
     type: String
 
