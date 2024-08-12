@@ -13,6 +13,9 @@ const test = new mongoose.Schema({
   },
   type: {
     type:String
+  },
+  madeAt: {
+    type:String
   }
 })
 
