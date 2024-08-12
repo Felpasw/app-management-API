@@ -1,22 +1,30 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Model } from 'mongoose'
 
+interface ITest extends Document {
+  success: boolean
+  msg: string
+  SN: string
+  type: string
+  madeAt: string
+}
 
-const test = new mongoose.Schema({
+const testSchema = new mongoose.Schema<ITest>({
   success: {
     type: Boolean,
   },
   msg: {
-    type: String
+    type: String,
   },
   SN: {
-    type:String
+    type: String,
   },
   type: {
-    type:String
+    type: String,
   },
   madeAt: {
-    type:String
-  }
+    type: String,
+  },
 })
 
-export default mongoose.model('Tests', test);
+const TestModel = mongoose.model<ITest>('Tests', testSchema)
+export default TestModel

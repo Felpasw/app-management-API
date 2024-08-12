@@ -9,7 +9,7 @@ async function insert(Model, data) {
   }
 }
 
-async function get(Model: any, object: any) {
+async function get<T extends Document>(Model: Model<T>, object: any): Promise<T[]> {
   try {
     return await Model.find(object)
   } catch (error) {

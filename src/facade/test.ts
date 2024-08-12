@@ -6,6 +6,7 @@ const get = async (object: any) => {
 }
 
 const insert = async (object: any) => {
+  object.madeAt = new Date().toISOString()
   return await dbo.insert(tests, object)
 }
 

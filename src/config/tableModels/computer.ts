@@ -1,20 +1,26 @@
-import mongoose from 'mongoose';
+import mongoose, { Document, Model } from 'mongoose'
 
+interface IComputer extends Document {
+  model: string
+  IP: string
+  online: string
+  SN: string
+}
 
-const computer = new mongoose.Schema({
+const computerSchema = new mongoose.Schema<IComputer>({
   model: {
     type: String,
   },
   IP: {
-    type: String
+    type: String,
   },
   online: {
-    type: String
+    type: String,
   },
   SN: {
-    type: String
-
-  }
+    type: String,
+  },
 })
 
-export default mongoose.model('Computers', computer);
+const ComputerModel = mongoose.model<IComputer>('Computers', computerSchema)
+export default ComputerModel
