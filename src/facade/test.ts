@@ -6,7 +6,17 @@ const get = async (object: any) => {
 }
 
 const insert = async (object: any) => {
-  object.madeAt = new Date().toISOString()
+  const now = new Date()
+  const formattedDate =
+    now.toLocaleDateString('pt-BR') +
+    ' às ' +
+    now.toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+
+  object.madeAt = formattedDate
+
   return await dbo.insert(tests, object)
 }
 
