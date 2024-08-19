@@ -1,13 +1,13 @@
-import mongoose, { Document, Model } from 'mongoose'
+import mongoose, { Document, Schema } from 'mongoose'
 
 interface IComputer extends Document {
   model: string
   IP: string
-  online: string
+  online: boolean
   SN: string
 }
 
-const computerSchema = new mongoose.Schema<IComputer>({
+const computerSchema = new Schema<IComputer>({
   model: {
     type: String,
   },
@@ -15,7 +15,7 @@ const computerSchema = new mongoose.Schema<IComputer>({
     type: String,
   },
   online: {
-    type: String,
+    type: Boolean,
   },
   SN: {
     type: String,
