@@ -1,6 +1,8 @@
-const route = "/login"
-import api from "../api/login"
+import { get } from '../dbo/base'
+import UserModel from '../config/tableModels/user'
 
-export default (router) => {
-  router.route(route).post(api.post)
+const post = async (object) => {
+  const response = await get(UserModel, object)
+  console.log(response)
 }
+export { post }

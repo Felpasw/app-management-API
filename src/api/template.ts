@@ -1,7 +1,5 @@
-import  fs from "fs"
-import path from "path"
-
-
+import fs from 'fs'
+import path from 'path'
 
 const get = async (req, res) => {
   const object = req.query
@@ -29,7 +27,6 @@ const insert = async (req, res) => {
 
   const facade = require(`../facade/${route}`)
 
-  
   const result = await facade.insert(object, userId)
   if (result.errors) {
     return res.status(400).send(result.errors)
@@ -76,8 +73,7 @@ const getById = async (req, res) => {
   return res.sendStatus(400)
 }
 
-
-export default{
+export default {
   getById,
   get,
   insert,
