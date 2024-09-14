@@ -5,6 +5,7 @@ import auth from '../midlewares/auth'
 import handleFacedeExistence from '../midlewares/handleFacadeExistence'
 const path = require('path')
 import login from '../api/login'
+import logout from '../api/logout'
 
 const router = express.Router()
 
@@ -22,6 +23,8 @@ router.get('/ping', (req, res) => {
 })
 
 router.post('/login', login.insert)
+
+router.post('/logout', logout.insert)
 
 router.get(`/:route`, auth.validate, handleFacedeExistence, api.get)
 

@@ -1,10 +1,11 @@
-import mongoose, { Document, Schema } from 'mongoose'
+import mongoose, { Document, Schema } from 'mongoose';
 
-interface IComputer extends Document {
-  model: string
-  IP: string
-  online: boolean
-  SN: string
+interface IComputer {
+  model: string;
+  IP: string;
+  online: boolean;
+  SN: string;
+  lastSeenOnline: string;
 }
 
 const computerSchema = new Schema<IComputer>({
@@ -20,7 +21,10 @@ const computerSchema = new Schema<IComputer>({
   SN: {
     type: String,
   },
-})
+  lastSeenOnline: {
+    type: String,
+  },
+});
 
-const ComputerModel = mongoose.model<IComputer>('Computers', computerSchema)
-export default ComputerModel
+const ComputerModel = mongoose.model<IComputer & Document>('Computer', computerSchema);
+export default ComputerModel;
