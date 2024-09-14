@@ -25,10 +25,9 @@ async function update<T extends ModelDocument>(Model: Model<T>, id: string, data
   }
 }
 
-// Função genérica para excluir um documento
-async function remove<T extends ModelDocument>(Model: Model<T>, id: string): Promise<void> {
+async function remove<T extends ModelDocument>(Model: Model<T>, id: string): Promise<T> {
   try {
-    await Model.findByIdAndDelete(id)
+    return await Model.findByIdAndDelete(id)
   } catch (error) {
     throw new Error(`Erro ao excluir documento: ${error}`)
   }
