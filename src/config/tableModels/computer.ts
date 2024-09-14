@@ -20,6 +20,7 @@ const computerSchema = new Schema<IComputer>({
   },
   SN: {
     type: String,
+    unique: true
   },
   lastSeenOnline: {
     type: String,
