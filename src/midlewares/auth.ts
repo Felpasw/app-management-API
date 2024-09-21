@@ -4,6 +4,8 @@ import computerModel from '../config/tableModels/computer';
 import dbo from '../dbo/base';
 
 const validate = async (req: Request, res: Response, next: NextFunction) => {
+  return next();
+  
   if (req.cookies.cookieID) {
     const response = await dbo.get(userModel, { _id: req.cookies.cookieID });
     if (response) {

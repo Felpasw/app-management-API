@@ -6,15 +6,18 @@ import handleFacedeExistence from '../midlewares/handleFacadeExistence'
 const path = require('path')
 import login from '../api/login'
 import logout from '../api/logout'
+require('dotenv').config()
+
+
 
 const router = express.Router()
 
 router.use((_req, res, next) => {
   res.header('Access-Control-Allow-Origin', `*`)
-  res.header('Access-Control-Allow-Credentials', true)
+  r//es.header('Access-Control-Allow-Credentials', true)
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   res.header('Access-Control-Allow-Headers', '*')
-  router.use(cors({ credentials: true, origin: `*` }))
+  router.use(cors({ origin: `*` }))
   next()
 })
 
