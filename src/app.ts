@@ -11,7 +11,7 @@ const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 
 app.use(bodyParser.json())
-app.use(cors({ credentials: true, origin: process.env.CORS }))
+app.use(cors({ credentials: true, origin: "*" }))
 app.use(helmet())
 
 app.use(router)

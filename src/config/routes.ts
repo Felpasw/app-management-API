@@ -10,11 +10,11 @@ import logout from '../api/logout'
 const router = express.Router()
 
 router.use((_req, res, next) => {
-  res.header('Access-Control-Allow-Origin', `${process.env.CORS}`)
+  res.header('Access-Control-Allow-Origin', `*`)
   res.header('Access-Control-Allow-Credentials', true)
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE')
   res.header('Access-Control-Allow-Headers', '*')
-  router.use(cors({ credentials: true, origin: `${process.env.CORS}` }))
+  router.use(cors({ credentials: true, origin: `*` }))
   next()
 })
 
