@@ -6,6 +6,7 @@ import handleFacedeExistence from '../midlewares/handleFacadeExistence'
 const path = require('path')
 import login from '../api/login'
 import logout from '../api/logout'
+import graph from '../api/graph'
 require('dotenv').config()
 
 
@@ -26,6 +27,10 @@ router.get('/ping', (req, res) => {
 })
 
 router.post('/login', login.insert)
+
+router.get('/graph/getCounts', graph.get)
+
+
 
 router.post('/logout', logout.insert)
 
