@@ -6,19 +6,20 @@ const get = async (object: any) => {
 }
 
 const insert = async (object: any) => {
-  const now = new Date()
-  const formattedDate =
-    now.toLocaleDateString('pt-BR') +
-    ' às ' +
-    now.toLocaleTimeString('pt-BR', {
-      hour: '2-digit',
-      minute: '2-digit',
-    })
+  const now = new Date();
 
-  object.madeAt = formattedDate
+  const formatter = new Intl.DateTimeFormat('pt-BR', {
+    timeZone: 'America/Sao_Paulo',
+    dateStyle: 'short',
+    timeStyle: 'short',
+  });
 
-  return await dbo.insert(tests, object)
-}
+  const formattedDate = formatter.format(now).replace(',', ' às');
+
+  object.madeAt = formattedDate;
+
+  return await dbo.insert(tests, object);
+};
 
 const update = async (object, id) => {
   return await dbo.update(tests, id, object)
